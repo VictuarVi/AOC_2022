@@ -5,8 +5,8 @@ int main()
 {
     FILE *f;
     f = fopen("input.txt", "r");
-    char num[10]; //numero
-    int s = 0, sM = 0; //somme parziali, somma massima
+    char num[10];      // numero
+    int s = 0, sM = 0; // somme parziali, somma massima
 
     while (!feof(f))
     {
