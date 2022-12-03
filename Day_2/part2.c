@@ -17,11 +17,11 @@ int main(int argc, char *argv[])
         getc(f);
 
         if (0 == strcmp(p, "A X"))
-            s += 4;
-        if (0 == strcmp(p, "A Y"))
-            s += 8;
-        if (0 == strcmp(p, "A Z"))
             s += 3;
+        if (0 == strcmp(p, "A Y"))
+            s += 4;
+        if (0 == strcmp(p, "A Z"))
+            s += 8;
         if (0 == strcmp(p, "B X"))
             s += 1;
         if (0 == strcmp(p, "B Y"))
@@ -29,13 +29,11 @@ int main(int argc, char *argv[])
         if (0 == strcmp(p, "B Z"))
             s += 9;
         if (0 == strcmp(p, "C X"))
-            s += 7;
-        if (0 == strcmp(p, "C Y"))
             s += 2;
-        if (0 == strcmp(p, "C Z"))
+        if (0 == strcmp(p, "C Y"))
             s += 6;
-
-        //printf ("Ciclo %d | s = %d | p = '%s'\n", ++n, s, p);
+        if (0 == strcmp(p, "C Z"))
+            s += 7;
 
         st = st + s;
         s = 0;
@@ -44,5 +42,4 @@ int main(int argc, char *argv[])
     fclose(f);
 
     printf("\nst = %d\n", st);
-    printf("per %d linee", n);
 }
