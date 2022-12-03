@@ -1,32 +1,17 @@
-// Idea:
-// 1 - Lunghezza della stringa
-// 2 - Dividerla per metà
-// 3 - Controllare quali caratteri si ripetono (case sensitive)
-// 4 - Salvare quel dato
-// 5 - Convertire per priorità
-// 6 - Salvare dato
-// 7 - Stampare somma di tutte le priorità
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
-
-enum alp {a, b, c, d, e, f, g, h, i, j, k, l, m , n, o, p, q, r, s, t, u, v, w, x, y, z, A, B, C, D, E, F, G, H, I, J, K, L, M , N, O, P, Q, R, S, T, U, V, W, X, Y, Z};
-
-enum alp val(enum alp P){
-    return P;
-}
 
 int main(int argc, char *argv[])
 {
     FILE *f;
     f = fopen(argv[1], "r");
     char b[70], p1[35], p2[35], p[1];
-    int l;
+    int l;     // lunghezza della stringa
     int s = 0; // somma delle priorità
 
-    int n = 0;
+    int n = 0; // nnumero di cicli
 
     while (!feof(f))
     {
@@ -39,19 +24,19 @@ int main(int argc, char *argv[])
         for (int i = 0; i < l / 2; i++)
         {
             p1[i] = b[i];
-            p2[i] = b[i + l/2];
+            p2[i] = b[i + l / 2];
         }
-        
-        printf ("\nCiclo %d | ", ++n);
-        for (int i = 0; i < l / 2; i++)
-        {
-            printf ("%c", p1[i]);
-        }
-        printf ("----");
-        for (int i = 0; i < l / 2; i++)
-        {
-            printf ("%c", p2[i]);
-        }
+
+        // printf ("\nCiclo %d | ", ++n);
+        // for (int i = 0; i < l / 2; i++)
+        // {
+        //     printf ("%c", p1[i]);
+        // }
+        // printf ("----");
+        // for (int i = 0; i < l / 2; i++)
+        // {
+        //     printf ("%c", p2[i]);
+        // }
 
         bool flag = true;
         for (int j = 0; j < l / 2 && flag; j++)
@@ -65,17 +50,39 @@ int main(int argc, char *argv[])
                 }
             }
         }
-        
-        printf (" | p = %c", p[0]);
-        enum alp lett;
-        lett = p[0];
-        printf (" => %d", lett);
 
-        s = s + val(p[0]);
+        int v;
+        // printf (" | p = %c", p[0]);
+        // if (p[0] >= 'a' && p[0] <= 'z'){
+        //     v = p[0]-96;
+        //     printf (" => %d", v);
+        //     s = s + v;
+        // }
+        // else {
+        //     v = tolower(p[0]);
+        //     v = p[0]-38;
+        //     printf (" => %d", v);
+        //     s = s + v;
+        // }
+
+        if (p[0] >= 'a' && p[0] <= 'z')
+        {
+            v = p[0] - 96;
+            s = s + v;
+        }
+        else
+        {
+            v = p[0] - 38;
+            s = s + v;
+        }
     }
 
     fclose(f);
 
-    printf("\n\ns = %d", s);
-    //14582 è troppo alta
+    printf("\ns = %d\n", s);
+    // 14582 è troppo alta
+    // 7875 è troppo alta
+    // 7872 = soluzione
+
+    return 0;
 }
