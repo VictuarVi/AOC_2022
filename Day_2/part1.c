@@ -1,23 +1,21 @@
-// x = 1, Y = 2, Z = 3
-// vinta = +6
-// pari = lettera + lettera
-// tot = somma di tutti i precedenti
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-int main()
+int main(int argc, char *argv[])
 {
     FILE *f;
-    f = fopen("input.txt", "r");
+    f = fopen(argv[1], "r");
     char p[4];
     int s = 0, st = 0;
 
     int n = 0;
+
     while (!feof(f))
-    {   
+    {
         fgets(p, 4, f);
+        getc(f);
+
         if (0 == strcmp(p, "A X"))
             s += 2;
         if (0 == strcmp(p, "A Y"))
@@ -36,12 +34,15 @@ int main()
             s += 2;
         if (0 == strcmp(p, "C Z"))
             s += 6;
-        
+
+        printf ("Ciclo %d | s = %d | p = '%s'\n", ++n, s, p);
+
         st = st + s;
         s = 0;
     }
 
-    printf ("\nst = %d", st);
-
     fclose(f);
+
+    printf("st = %d\n", st);
+    printf("per %d linee", n);
 }
