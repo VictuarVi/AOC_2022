@@ -14,9 +14,11 @@ int main(){
     char p[1];
     char k[] = "z";
 
+    printf ("%d", atoi(k));
+    
     p[0] = k[0];
     enum alp lett = z;
     //enum up Lett = z;
     
-    printf ("%d", val(p[0]));
+    printf ("%d", (enum alp)p[0]);
 }
