@@ -7,18 +7,21 @@ int main(int argc, char *argv[])
 {
     FILE *f;
     f = fopen(argv[1], "r");
-    char b[70], p1[35], p2[35], p[1];
+    char b[70], p1[35], p2[35], p;  // trasformato p in char, non più array[1] di char
     int l;     // lunghezza della stringa
     int s = 0; // somma delle priorità
-
-    int n = 0; // nnumero di cicli
 
     while (!feof(f))
     {
         fgets(b, 70, f);
-        getc(f);
+
+        // Come ho scoperto l'odio di Vittorio per C:
+        //      char ch = getc(f);
+        //      printf("%c\n", ch);
 
         l = strlen(b);
+        // La prima stringha a quanto pare la leggeva da 19
+        if (l % 2 == 1) l--;
         // printf ("l = %d", l);
 
         for (int i = 0; i < l / 2; i++)
@@ -45,7 +48,7 @@ int main(int argc, char *argv[])
             {
                 if (p1[j] == p2[k])
                 {
-                    p[0] = p2[k];
+                    p = p2[k];
                     flag = false;
                 }
             }
@@ -65,21 +68,20 @@ int main(int argc, char *argv[])
         //     s = s + v;
         // }
 
-        if (p[0] >= 'a' && p[0] <= 'z')
+        if (p >= 'a' && p <= 'z')
         {
-            v = p[0] - 96;
-            s = s + v;
+            v = p - 96;
         }
         else
         {
-            v = p[0] - 38;
-            s = s + v;
+            v = p - 38;
         }
+        s = s + v;
     }
 
     fclose(f);
 
-    printf("\ns = %d\n", s); // il codice restituisce 7875, ma è troppo alto di 3
+    printf("\ns = %d\n", s);
 
     return 0;
 }
