@@ -79,10 +79,7 @@ int main(int argc, char *argv[])
 
     fclose(f);
 
-    printf("\ns = %d\n", s);
-    // 14582 è troppo alta
-    // 7875 è troppo alta
-    // 7872 = soluzione
+    printf("\ns = %d\n", s); // il codice restituisce 7875, ma è troppo alto di 3
 
     return 0;
 }
