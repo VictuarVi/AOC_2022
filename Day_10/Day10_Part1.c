@@ -2,11 +2,11 @@
 #include <stdlib.h>
 #include <string.h>
 
-FILE *controlli_file(int argv, char *argc[])
+FILE *file_control(int argv, char *argc[])
 {
     if (argv != 2)
     {
-        printf("Errore nel numero di parametri.");
+        printf("Only 2 parameters arguments allowed.");
         exit(-1);
     }
 
@@ -14,8 +14,8 @@ FILE *controlli_file(int argv, char *argc[])
     fp = fopen(argc[1], "r");
     if (fp == NULL)
     {
-        printf("Errore nell'apertura del file");
-        exit(1);
+        printf("The file can't be read.");
+        exit(-1);
     }
 
     return fp;
@@ -23,7 +23,7 @@ FILE *controlli_file(int argv, char *argc[])
 
 int main(int argv, char *argc[])
 {
-    FILE *fp = controlli_file (argv, argc);
+    FILE *fp = file_control(argv, argc);
 
     int x = 1, cycle = 1, k = 20;
     int sig = 0;
@@ -36,7 +36,8 @@ int main(int argv, char *argc[])
         x += num;
 
         cycle++;
-        if (!strcmp(com, "addx")) cycle++;
+        if (!strcmp(com, "addx"))
+            cycle++;
 
         if (cycle >= k)
         {
