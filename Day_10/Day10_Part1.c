@@ -18,7 +18,7 @@ int main(int argv, char *argc[])
     }
 
     char com[5];
-    int num = 0, x = 0, cycle = 0;
+    int num = 0, x = 1, cycle = 0;
     int sig = 1;
 
     while (!feof(fp))
