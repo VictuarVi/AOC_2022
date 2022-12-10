@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-int main(int argv, char *argc[])
+FILE *controlli_file(int argv, char *argc[])
 {
     if (argv != 2)
     {
@@ -17,27 +18,36 @@ int main(int argv, char *argc[])
         exit(1);
     }
 
-    char com[5];
-    int num = 0, x = 1, cycle = 0;
-    int sig = 1;
+    return fp;
+}
+
+int main(int argv, char *argc[])
+{
+    FILE *fp = controlli_file (argv, argc);
+
+    int x = 1, cycle = 1, k = 20;
+    int sig = 0;
 
     while (!feof(fp))
     {
+        char com[5];
+        int num = 0;
         fscanf(fp, "%s %d", &com, &num);
         x += num;
 
-        if (com == 'noop') cycle += 1;
-        if (com == 'addx') cycle += 2;
+        cycle++;
+        if (!strcmp(com, "addx")) cycle++;
 
-        if (cycle == 20 || cycle == 60 || cycle == 100 || cycle == 120 || cycle == 180 || cycle == 220)
+        if (cycle >= k)
         {
-            sig = cycle * x;
+            sig = sig + k * x;
+            k += 40;
         }
     }
 
     fclose(fp);
 
-    printf("signal strength = %d\n", sig);
+    printf("\nsignal strength = %d\n", sig);
 
     return 0;
 }
