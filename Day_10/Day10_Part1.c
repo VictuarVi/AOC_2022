@@ -10,7 +10,7 @@ int main(int argv, char *argc[])
     }
 
     FILE *fp;
-    fp = fopen("argc[]", "r");
+    fp = fopen(argc[1], "r");
     if (fp == NULL)
     {
         printf("Errore nell'apertura del file");
@@ -37,7 +37,7 @@ int main(int argv, char *argc[])
 
     fclose(fp);
 
-    printf("signal strenght = %d\n", sig);
+    printf("signal strength = %d\n", sig);
 
     return 0;
 }
