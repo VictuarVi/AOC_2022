@@ -5,7 +5,7 @@
 
 int main(int argv, char *argc[])
 {
-    FILE *fp = file_control(argv, argc);
+    FILE *fp = file_control(argv, &argc);
 
     int x = 1, cycle = 1, k = 20;
     int sig = 0;
